@@ -135,7 +135,7 @@
         };
 
     };
-
+    
     macros {
         plus_minus: plus_minus {
             compatible = "zmk,behavior-macro";
@@ -248,7 +248,7 @@
                 &kp Q           &kp W           &kp F            &kp P           &kp G              &kp J         &kp L              &kp U            &kp Y           &kp SEMICOLON
                 &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S      &mt LEFT_SHIFT T  &kp D            &kp H         &mt RIGHT_SHIFT N  &mt RCTRL E      &mt LEFT_ALT I  &mt RIGHT_GUI O
 &mt RIGHT_ALT MINUS  &lt 7 Z         &kp X           &mt RA(COMMA) C  &kp V         &kp B        &kp K         &kp M              &kp COMMA        &kp DOT         &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
-                                              &lt 2 TAB        &mt LS(LC(LA(LEFT_GUI))) SPACE  &lt 1 ENTER  &lt 1 ESCAPE  MAGIC_SHIFT        &lt 2 SCROLLLOCK
+                                              &lt 2 TAB        &mt LS(LC(LA(LEFT_GUI))) SPACE  &lt 1 ENTER  &lt 1 LS(LC(LA(LEFT_GUI(F12)))  MAGIC_SHIFT        &lt 2 SCROLLLOCK
             >;
         };
 
