@@ -1,13 +1,16 @@
 .PHONY: all update clean build copy
 
-all: clean build copy
+all: clean build copy 
 
 update:
 	docker run --rm -v $(PWD):/workdir -w /workdir zmkfirmware/zmk-dev-arm:3.5 bash -c "west update"
 
 clean:
+	docker run --rm -v $(PWD):/workdir -w /workdir zmkfirmware/zmk-dev-arm:3.5 bash -c "\
+		rm -rf build/*"
 	mkdir -p firmware
 	rm -rf firmware/*
+
 
 build:
 	docker run --rm -v $(PWD):/workdir -w /workdir zmkfirmware/zmk-dev-arm:3.5 bash -c "\
