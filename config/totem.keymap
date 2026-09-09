@@ -52,14 +52,14 @@
             timeout-ms = <30>;
             require-prior-idle-ms = <80>;
             bindings = <&combo_bksp LC(BSPC) BSPC>;
-            key-positions = <5 6>;
+            key-positions = <6 7>;
         };
 
         del {
             timeout-ms = <30>;
             require-prior-idle-ms = <80>;
             bindings = <&combo_bksp LC(DELETE) DELETE>;
-            key-positions = <6 7>;
+            key-positions = <7 8>;
         };
 
         escape {
@@ -105,7 +105,7 @@
 
         ctrl_shift_t {
             bindings = <&kp LC(LS(T))>;
-            key-positions = <12 13>;
+      	    key-positions = <12 13>;
         };
 
         plus_minus_combo {
@@ -113,6 +113,27 @@
             key-positions = <10 20>;
             bindings = <&plus_minus>;
         };
+
+        open_bracket {
+            key-positions = <8 9>;
+            bindings = <&kp LBKT>;
+        };
+
+        close_bracket {
+            key-positions = <0 1>;
+            bindings = <&kp RBKT>;
+        };
+
+        grave {
+            key-positions = <10 11>;
+            bindings = <&kp GRAVE>;
+        };
+
+        acute {
+            key-positions = <18 19>;
+            bindings = <&kp SQT>;
+        };
+
     };
 
     macros {
