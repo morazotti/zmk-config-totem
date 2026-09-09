@@ -63,7 +63,7 @@
         };
 
         escape {
-            timeout-ms = <18>;
+            timeout-ms = <40>;
             require-prior-idle-ms = <80>;
             bindings = <&kp ESC>;
             key-positions = <16 17>;
@@ -77,9 +77,9 @@
         };
 
         leader {
-            timeout-ms = <18>;
+            timeout-ms = <40>;
             require-prior-idle-ms = <80>;
-            bindings = <&kp LS(LC(LA(LG(F12))))>;
+            bindings = <&kp LC(LS(LA(LG(F12))))>;
             key-positions = <17 18>;
         };
 
@@ -248,7 +248,7 @@
                 &kp Q           &kp W           &kp F            &kp P           &kp G              &kp J         &kp L              &kp U            &kp Y           &kp SEMICOLON
                 &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S      &mt LEFT_SHIFT T  &kp D            &kp H         &mt RIGHT_SHIFT N  &mt RCTRL E      &mt LEFT_ALT I  &mt RIGHT_GUI O
 &mt RIGHT_ALT MINUS  &lt 7 Z         &kp X           &mt RA(COMMA) C  &kp V         &kp B        &kp K         &kp M              &kp COMMA        &kp DOT         &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
-                                              &lt 2 TAB        &mt LS(LC(LA(LEFT_GUI))) SPACE  &lt 1 ENTER  &lt 1 LS(LC(LA(LEFT_GUI(F12)))  MAGIC_SHIFT        &lt 2 SCROLLLOCK
+                                              &lt 2 TAB        &mt LC(LS(LA(LGUI))) SPACE  &lt 1 ENTER  &lt 1 LC(LS(LA(LG(F12))))  MAGIC_SHIFT        &lt 2 SCROLLLOCK
             >;
         };
 
@@ -308,10 +308,10 @@
 
         accents {
             bindings = <
-                &trans     &tld A         &trans   &trans       &trans  &kp SCROLLLOCK  &act U  &trans  &umt U  &umt O
-                &kp GRAVE  &german_sz     &kp SQT  &kp LS(SQT)  &trans  &tld N          &act E  &act I  &act O  &tld O
-&trans     &trans  &kp CARET  &kp RA(COMMA)  &trans   &trans       &trans  &trans          &trans  &trans  &trans  &trans
-                              &trans         &trans   &trans       &trans  &trans          &trans
+                &umt A     &trans         &tld A     &trans         &trans       &trans    &kp SCROLLLOCK  &act U    &umt U    &umt O
+                &act A     &kp GRAVE      &german_sz &kp SQT        &kp LS(SQT)  &trans    &tld N          &act E    &act I    &act O
+&trans          &trans     &kp CARET      &kp RA(COMMA) &trans      &trans       &trans    &trans          &trans    &tld O    &trans    &trans
+                                          &trans     &trans         &trans       &trans    &trans          &trans
             >;
         };
 
