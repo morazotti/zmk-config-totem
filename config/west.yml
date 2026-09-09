@@ -7,13 +7,5 @@ manifest:
       remote: zmkfirmware
       revision: v0.3
       import: app/west.yml
-    - name: zmk-adaptive-key
-      remote: urob
-      revision: v0.3
-      path: modules/zmk/adaptive-key
-    - name: zmk-helpers
-      remote: urob
-      revision: v0.3
-      path: modules/zmk/helpers
   self:
     path: config
