@@ -105,7 +105,7 @@
 
         ctrl_shift_t {
             bindings = <&kp LC(LS(T))>;
-      	    key-positions = <12 13>;
+      	    key-positions = <2 3>;
         };
 
         plus_minus_combo {
