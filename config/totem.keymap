@@ -336,9 +336,9 @@
 
 	symbols_layer {
 	  bindings = <
-		   &kp MEH(Q) &kp MEH(W) &kp MEH(F) &kp MEH(P) &kp LBKT  &kp RBKT &kp F9 &kp F10 &kp F11  &kp F12 
+		   &kp MEH(Q) &kp MEH(W) &kp MEH(F) &kp MEH(P) &kp LBKT  &kp RBKT &kp F1 &kp F2  &kp F3   &kp F4 
 		   &kp MEH(A) &kp MEH(R) &kp MEH(S) &kp MEH(T) &kp LPAR  &kp RPAR &kp F5 &kp F6  &kp F7   &kp F8 
-	    &trans &kp MEH(Z) &kp MEH(X) &kp MEH(C) &kp MEH(V) &kp LBRC  &kp RBRC &kp F1 &kp F2  &kp F3   &kp F4  &trans
+	    &trans &kp MEH(Z) &kp MEH(X) &kp MEH(C) &kp MEH(V) &kp LBRC  &kp RBRC &kp F9 &kp F10 &kp F11  &kp F12  &trans
 		  			 &trans     &trans     &trans    &trans   &trans &trans 
 	    
 	    >;
