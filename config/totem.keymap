@@ -13,6 +13,7 @@
 #define MIRROR_GAME 6
 #define ACCENTS 7
 #define MOUSE 8
+#define SYM 9
 
 #define QUICK_TAP_MS 175
 
@@ -51,14 +52,14 @@
         bksp {
             timeout-ms = <30>;
             require-prior-idle-ms = <80>;
-            bindings = <&combo_bksp LC(BSPC) BSPC>;
+            bindings = <&kp2 LC(BSPC) BSPC>;
             key-positions = <6 7>;
         };
 
         del {
             timeout-ms = <30>;
             require-prior-idle-ms = <80>;
-            bindings = <&combo_bksp LC(DELETE) DELETE>;
+            bindings = <&kp2 LC(DELETE) DELETE>;
             key-positions = <7 8>;
         };
 
@@ -178,6 +179,12 @@
             #binding-cells = <0>;
             bindings = <&kp SCROLLLOCK &kp S &kp S>;
         };
+
+        meh: meh {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &kp LC(LS(LA(MACRO_PLACEHOLDER)))>;
+        };
     };
 
     behaviors {
@@ -231,7 +238,7 @@
             bindings = <&sl 5>, <&tog 5>;
         };
 
-        combo_bksp: combo_backspace_ht {
+        kp2: key_two_presses {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
@@ -247,8 +254,8 @@
             bindings = <
                 &kp Q           &kp W           &kp F            &kp P           &kp G              &kp J         &kp L              &kp U            &kp Y           &kp SEMICOLON
                 &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S      &mt LEFT_SHIFT T  &kp D            &kp H         &mt RIGHT_SHIFT N  &mt RCTRL E      &mt LEFT_ALT I  &mt RIGHT_GUI O
-&mt RIGHT_ALT MINUS  &lt 7 Z         &kp X           &mt RA(COMMA) C  &kp V         &kp B        &kp K         &kp M              &kp COMMA        &kp DOT         &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
-                                              &lt 2 TAB        &mt LC(LS(LA(LGUI))) SPACE  &lt 1 ENTER  &lt 1 LC(LS(LA(LG(F12))))  MAGIC_SHIFT        &lt 2 SCROLLLOCK
+&mt RIGHT_ALT MINUS  &lt 7 Z         &kp X           &mt RA(COMMA) C  &kp V         &kp B        &kp K         &kp M              &kp2 MINUS COMMA        &kp2 EXCL DOT         &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
+                                              &lt 2 TAB        &mt LC(LS(LA(LGUI))) SPACE  &lt 1 ENTER  &lt 9 LC(LS(LA(LG(F12))))  MAGIC_SHIFT        &lt 2 SCROLLLOCK
             >;
         };
 
@@ -272,7 +279,7 @@
 
         adjust_layer {
             bindings = <
-                &none         &none         &none         &studio_unlock  &none         &none         &studio_unlock  &none         &none         &none
+                &bt BT_CLR         &none         &none         &studio_unlock  &none         &none         &studio_unlock  &none         &none         &bt BT_CLR
                 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4  &bt BT_SEL 4  &bt BT_SEL 3    &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
 &sys_reset   &none         &none         &none         &none           &none         &none         &none           &none         &none         &none         &sys_reset
                                          &trans        &none           &trans        &none         &trans          &trans
@@ -308,9 +315,9 @@
 
         accents {
             bindings = <
-                &umt A     &trans         &tld A     &trans         &trans       &trans    &kp SCROLLLOCK  &act U    &umt U    &umt O
+                &umt A     &trans         &tld A     &trans         &trans       &trans    &trans          &act U    &umt U    &umt O
                 &act A     &kp GRAVE      &german_sz &kp SQT        &kp LS(SQT)  &trans    &tld N          &act E    &act I    &act O
-&trans          &trans     &kp CARET      &kp RA(COMMA) &trans      &trans       &trans    &trans          &trans    &tld O    &trans    &trans
+&kp TILDE       &trans     &kp CARET      &kp RA(COMMA) &trans      &trans       &trans    &trans          &trans    &tld O    &trans    &live_keys SQT
                                           &trans     &trans         &trans       &trans    &trans          &trans
             >;
         };
@@ -323,5 +330,15 @@
 				&tog 8	&tog 8	&tog 8  &tog 8		&tog 8	&tog 8
             >;
         };
+
+	symbols_layer {
+	  bindings = <
+		   &meh Q &meh W &meh F &meh P &kp LBKT  &kp RBKT &kp F9 &kp F10 &kp F11  &kp F12 
+		   &meh A &meh R &meh S &meh T &kp LPAR  &kp RPAR &kp F5 &kp F6  &kp F7   &kp F8 
+	    &trans &meh Z &meh X &meh C &meh V &kp LBRC  &kp RBRC &kp F1 &kp F2  &kp F3   &kp F4  &trans
+		                 &trans &trans &trans    &trans   &trans &trans 
+	    
+	    >;
+	};
     };
 };
