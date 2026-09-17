@@ -130,12 +130,12 @@
 
         grave {
             key-positions = <10 11>;
-            bindings = <&kp GRAVE>;
+            bindings = <&live_keys GRAVE>;
         };
 
         acute {
             key-positions = <18 19>;
-            bindings = <&kp SQT>;
+            bindings = <&live_keys SQT>;
         };
 
     };
