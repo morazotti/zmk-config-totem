@@ -102,11 +102,6 @@
             key-positions = <23 24>;
         };
 
-        caps {
-            bindings = <&kp CAPSLOCK>;
-            key-positions = <13 16>;
-        };
-
         ctrl_shift_t {
             bindings = <&kp LC(LS(T))>;
       	    key-positions = <2 3>;
@@ -255,10 +250,10 @@
 
         default_layer {
             bindings = <
-                &kp Q           &kp W           &kp F            &kp P           &kp G              &kp J         &kp L              &kp U            &kp Y           &kp SEMICOLON
-                &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S      &mt LEFT_SHIFT T  &kp D            &kp H         &mt RIGHT_SHIFT N  &mt RCTRL E      &mt LEFT_ALT I  &mt RIGHT_GUI O
-&mt RIGHT_ALT MINUS  &lt 7 Z         &kp X           &mt RA(COMMA) C  &kp V         &kp B        &kp K         &kp M              &kp2 MINUS COMMA        &kp2 EXCL DOT         &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
-	      &lt 2 TAB        &mt LC(LS(LA(LGUI))) SPACE  &lt 1 ENTER  &lt 1 HYP(F12)  MAGIC_SHIFT        &lt 2 SCROLLLOCK
+ 		     &kp Q           &kp W           &kp F            &kp P                       &kp G              &kp J         &kp L              &kp U            &kp Y           &kp SEMICOLON
+ 		     &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S      &mt LEFT_SHIFT T            &kp D              &kp H         &mt RIGHT_SHIFT N  &mt RCTRL E      &mt LEFT_ALT I  &mt RIGHT_GUI O
+&mt RIGHT_ALT MINUS  &lt 7 Z         &kp X           &mt RA(COMMA) C  &kp V                       &kp B              &kp K         &kp M              &kp2 MINUS COMMA &kp2 EXCL DOT   &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
+	      	     	   	     	 	     &lt 2 TAB        &mt LC(LS(LA(LGUI))) SPACE  &lt 1 ENTER  	     &lt 1 HYP(F12)  MAGIC_SHIFT      &lt 2 SCROLLLOCK
             >;
         };
 
@@ -273,9 +268,9 @@
 
         raise_layer {
             bindings = <
-                &kp KP_SLASH              &kp KP_N7           &kp KP_N8        &kp KP_N9             &kp KP_MINUS  &kp PRINTSCREEN  &kp C_VOL_DN      &kp K_MUTE   &kp C_VOLUME_UP  &kp C_BRIGHTNESS_DEC
-                &mt LEFT_GUI KP_MULTIPLY  &mt LEFT_ALT KP_N4  &mt LCTRL KP_N5  &mt LEFT_SHIFT KP_N6  &kp KP_PLUS   &kp LEFT         &kp DOWN          &kp UP       &kp RIGHT        &kp K_BACK
-&kp LALT         &kp KP_N0                 &kp KP_N1           &kp KP_N2        &kp KP_N3             &kp KP_DOT    &kp HOME         &kp PAGE_DOWN     &kp PAGE_UP  &kp END          &trans                &tog 4
+                &kp KP_SLASH              &kp KP_N7           &kp KP_N8        &kp KP_N9             &kp KP_MINUS  &kp PRINTSCREEN  &kp C_VOL_DN      &kp K_MUTE   &kp C_VOLUME_UP  &kp C_BRIGHTNESS_INC
+                &mt LEFT_GUI KP_MULTIPLY  &mt LEFT_ALT KP_N4  &mt LCTRL KP_N5  &mt LEFT_SHIFT KP_N6  &kp KP_PLUS   &kp LEFT         &kp DOWN          &kp UP       &kp RIGHT        &kp CAPSLOCK
+&sk RALT         &kp KP_N0                 &kp KP_N1           &kp KP_N2        &kp KP_N3             &kp KP_DOT    &kp HOME         &kp PAGE_DOWN     &kp PAGE_UP  &kp END          &kp C_BRIGHTNESS_DEC      &tog 4
                                                                &kp K_PREV       &kp K_PLAY_PAUSE      &lt 1 K_NEXT  &lt 1 K_PREV     &kp K_PLAY_PAUSE  &kp K_NEXT
             >;
         };
