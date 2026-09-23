@@ -5,15 +5,15 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #define DEF 0
-#define LWR 1
-#define RSE 2
+#define FUN 1
+#define NUM 2
 #define ADJ 3
 #define GAME 4
 #define GAME_NUM 5
 #define MIRROR_GAME 6
 #define ACCENTS 7
-#define MOUSE 8
-#define SYM 9
+#define SYM 8
+#define NAV 9
 
 #define QUICK_TAP_MS 175
 
@@ -23,320 +23,313 @@
 
 
 &lt {
-    tapping-term-ms = <200>;
-    quick-tap-ms = <130>;
-    require-prior-idle-ms = <150>;
-    flavor = "balanced";
-    retro-tap;
+  tapping-term-ms = <200>;
+  quick-tap-ms = <130>;
+  require-prior-idle-ms = <150>;
+  flavor = "balanced";
+  retro-tap;
 };
 
 &mt {
-    tapping-term-ms = <180>;
-    quick-tap-ms = <130>;
-    require-prior-idle-ms = <120>;
-    flavor = "balanced";
+  tapping-term-ms = <180>;
+  quick-tap-ms = <130>;
+  require-prior-idle-ms = <120>;
+  flavor = "balanced";
 };
 
 &sk { quick-release; };
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
+  conditional_layers {
+    compatible = "zmk,conditional-layers";
 
-        tri-layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
+    tri-layer {
+      if-layers = <1 2>;
+      then-layer = <3>;
+    };
+  };
+
+  combos {
+    compatible = "zmk,combos";
+
+    bksp {
+      timeout-ms = <30>;
+      require-prior-idle-ms = <80>;
+      bindings = <&kp2 LC(BSPC) BSPC>;
+      key-positions = <6 7>;
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        bksp {
-            timeout-ms = <30>;
-            require-prior-idle-ms = <80>;
-            bindings = <&kp2 LC(BSPC) BSPC>;
-            key-positions = <6 7>;
-        };
-
-        del {
-            timeout-ms = <30>;
-            require-prior-idle-ms = <80>;
-            bindings = <&kp2 LC(DELETE) DELETE>;
-            key-positions = <7 8>;
-        };
-
-        escape {
-            timeout-ms = <40>;
-            require-prior-idle-ms = <80>;
-            bindings = <&kp ESC>;
-            key-positions = <16 17>;
-        };
-
-        toggle_mouse {
-            timeout-ms = <30>;
-            require-prior-idle-ms = <80>;
-            bindings = <&tog 8>;
-            key-positions = <11 12>;
-        };
-
-        leader {
-            timeout-ms = <40>;
-            require-prior-idle-ms = <80>;
-            bindings = <&kp LC(LS(LA(LG(F12))))>;
-            key-positions = <17 18>;
-        };
-
-        cut {
-            bindings = <&kp LC(X)>;
-            key-positions = <21 22>;
-        };
-
-        copy {
-            bindings = <&kp LC(C)>;
-            key-positions = <22 23>;
-        };
-
-        paste {
-            bindings = <&kp LC(V)>;
-            key-positions = <23 24>;
-        };
-
-        ctrl_shift_t {
-            bindings = <&kp LC(LS(T))>;
-      	    key-positions = <2 3>;
-        };
-
-        plus_minus_combo {
-            timeout-ms = <30>;
-            key-positions = <10 20>;
-            bindings = <&plus_minus>;
-        };
-
-        open_bracket {
-            key-positions = <8 9>;
-            bindings = <&kp LBKT>;
-        };
-
-        close_bracket {
-            key-positions = <0 1>;
-            bindings = <&kp RBKT>;
-        };
-
-        grave {
-            key-positions = <10 11>;
-            bindings = <&live_keys GRAVE>;
-        };
-
-        acute {
-            key-positions = <18 19>;
-            bindings = <&live_keys SQT>;
-        };
-
+    del {
+      timeout-ms = <30>;
+      require-prior-idle-ms = <80>;
+      bindings = <&kp2 LC(DELETE) DELETE>;
+      key-positions = <7 8>;
     };
+
+    escape {
+      timeout-ms = <40>;
+      require-prior-idle-ms = <80>;
+      bindings = <&kp ESC>;
+      key-positions = <16 17>;
+    };
+
+    leader {
+      timeout-ms = <40>;
+      require-prior-idle-ms = <80>;
+      bindings = <&kp LC(LS(LA(LG(F12))))>;
+      key-positions = <17 18>;
+    };
+
+    cut {
+      bindings = <&kp LC(X)>;
+      key-positions = <21 22>;
+    };
+
+    copy {
+      bindings = <&kp LC(C)>;
+      key-positions = <22 23>;
+    };
+
+    paste {
+      bindings = <&kp LC(V)>;
+      key-positions = <23 24>;
+    };
+
+    ctrl_shift_t {
+      bindings = <&kp LC(LS(T))>;
+      key-positions = <2 3>;
+    };
+
+    plus_minus_combo {
+      timeout-ms = <30>;
+      key-positions = <10 20>;
+      bindings = <&plus_minus>;
+    };
+
+    open_bracket {
+      key-positions = <8 9>;
+      bindings = <&kp LBKT>;
+    };
+
+    close_bracket {
+      key-positions = <0 1>;
+      bindings = <&kp RBKT>;
+    };
+
+    grave {
+      key-positions = <10 11>;
+      bindings = <&live_keys GRAVE>;
+    };
+
+    acute {
+      key-positions = <18 19>;
+      bindings = <&live_keys SQT>;
+    };
+
+  };
     
-    macros {
-        plus_minus: plus_minus {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SCROLLLOCK &kp PLUS &kp MINUS>;
-        };
-
-        live_keys: live_keys {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
-        };
-
-        act: act {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&ans &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-        };
-
-        grv: grv {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&gns &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-        };
-
-        tld: tld {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&kp TILDE &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-        };
-
-        umt: umt {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&kp DQT &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-        };
-
-        german_sz: german_sz {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SCROLLLOCK &kp S &kp S>;
-        };
-
-        meh: meh {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp LC(LS(LA(MACRO_PLACEHOLDER)))>;
-        };
+  macros {
+  plus_minus: plus_minus {
+      compatible = "zmk,behavior-macro";
+#binding-cells = <0>;
+      bindings = <&kp SCROLLLOCK &kp PLUS &kp MINUS>;
     };
 
-    behaviors {
-        magic_shift: magic_shift {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <QUICK_TAP_MS>;
-            bindings = <&kp>, <&magic_shift_tap>;
-        };
-
-        magic_shift_tap: magic_shift_tap {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&sk LSHFT>, <&capsword>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        capsword: capsword {
-            compatible = "zmk,behavior-caps-word";
-            #binding-cells = <0>;
-            continue-list = <SEMICOLON MINUS UNDERSCORE BACKSPACE A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
-        };
-
-        altgr_accent: altgr_accent {
-            compatible = "zmk,behavior-hold-tap";
-            bindings = <&mo>, <&kp>;
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <200>;
-        };
-
-        ans: acute_noshift {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp SQT>, <&kp SQT>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        gns: grave_noshift {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp GRAVE>, <&kp GRAVE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        tgnum: toggle_or_quit_game_num {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            bindings = <&sl 5>, <&tog 5>;
-        };
-
-        kp2: key_two_presses {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kp>, <&kp>;
-        };
+  live_keys: live_keys {
+      compatible = "zmk,behavior-macro-one-param";
+#binding-cells = <1>;
+      bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
     };
 
-    keymap {
-        compatible = "zmk,keymap";
-
-        default_layer {
-            bindings = <
- 		     &kp Q           &kp W           &kp F            &kp P                       &kp G              &kp J         &kp L              &kp U            &kp Y           &kp SEMICOLON
- 		     &mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S      &mt LEFT_SHIFT T            &kp D              &kp H         &mt RIGHT_SHIFT N  &mt RCTRL E      &mt LEFT_ALT I  &mt RIGHT_GUI O
-&mt RIGHT_ALT MINUS  &lt 7 Z         &kp X           &mt RA(COMMA) C  &kp V                       &kp B              &kp K         &kp M              &kp2 MINUS COMMA &kp2 EXCL DOT   &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
-	      	     	   	     	 	     &lt 2 TAB        &mt LC(LS(LA(LGUI))) SPACE  &lt 1 ENTER  	     &lt 1 HYP(F12)  MAGIC_SHIFT      &lt 2 SCROLLLOCK
-            >;
-        };
-
-        lower_layer {
-            bindings = <
-                &kp F2    &kp F3  &kp F4    &kp F5    &kp F6      &kp F7            &kp F8    &kp F9    &kp F10   &kp F11
-                &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT   &live_keys CARET  &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR
-&mt LALT EQUAL  &kp N1    &kp N2  &kp N3    &kp N4    &kp N5      &kp N6            &kp N7    &kp N8    &kp N9    &kp N0    &kp RALT
-                                  &trans    &trans    &sl 9       &sl 9             &trans    &trans
-            >;
-        };
-
-        raise_layer {
-            bindings = <
-                &kp KP_SLASH              &kp KP_N7           &kp KP_N8        &kp KP_N9             &kp KP_MINUS  &kp PRINTSCREEN  &kp C_VOL_DN      &kp K_MUTE   &kp C_VOLUME_UP  &kp C_BRIGHTNESS_INC
-                &mt LEFT_GUI KP_MULTIPLY  &mt LEFT_ALT KP_N4  &mt LCTRL KP_N5  &mt LEFT_SHIFT KP_N6  &kp KP_PLUS   &kp LEFT         &kp DOWN          &kp UP       &kp RIGHT        &kp CAPSLOCK
-&sk RALT         &kp KP_N0                 &kp KP_N1           &kp KP_N2        &kp KP_N3             &kp KP_DOT    &kp HOME         &kp PAGE_DOWN     &kp PAGE_UP  &kp END          &kp C_BRIGHTNESS_DEC      &tog 4
-                                                               &kp K_PREV       &kp K_PLAY_PAUSE      &lt 1 K_NEXT  &lt 1 K_PREV     &kp K_PLAY_PAUSE  &kp K_NEXT
-            >;
-        };
-
-        adjust_layer {
-            bindings = <
-                &bt BT_CLR         &none         &none         &studio_unlock  &none         &none         &studio_unlock  &none         &none         &bt BT_CLR
-                &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4  &bt BT_SEL 4  &bt BT_SEL 3    &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
-&sys_reset   &none         &none         &none         &none           &none         &none         &none           &none         &none         &none         &sys_reset
-                                         &trans        &none           &trans        &none         &trans          &trans
-            >;
-        };
-
-        game_mode {
-            bindings = <
-                &kp T  &kp Q  &kp W    &kp E           &kp R        &kp Y   &kp U   &kp I      &kp O    &kp P
-                &kp G  &kp A  &kp S    &kp D           &kp F        &kp H   &kp J   &kp K      &kp L    &kp SEMI
-&kp LCTRL  &kp B  &kp Z  &kp X    &kp C           &kp V        &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &tog 4
-	                                  &mt LALT ENTER  &lt 6 SPACE  &tgnum  &trans  &trans     &trans
-            >;
-        };
-
-        game_num {
-            bindings = <
-                &kp EQUAL     &kp N7                 &kp N8     &kp N9     &kp F4  &trans  &trans  &trans  &trans  &trans
-                &kp MINUS     &mt LEFT_ALT NUMBER_4  &kp N5     &kp N6     &kp F5  &trans  &trans  &trans  &trans  &trans
-&kp F3  &kp NUMBER_0  &kp N1                 &kp N2     &kp N3     &kp F6  &trans  &trans  &trans  &trans  &trans  &trans
-                                             &sk LCTRL  &kp SPACE  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        mirror_game {
-            bindings = <
-                &kp P     &kp O    &kp I      &kp U  &kp Y    &trans  &trans  &trans  &trans  &trans
-                &kp SEMI  &kp L    &kp K      &kp J  &kp H    &trans  &trans  &trans  &trans  &trans
-&kp LEFT_CONTROL  &kp FSLH  &kp DOT  &kp COMMA  &kp M  &kp N    &trans  &trans  &trans  &trans  &trans  &trans
-                                     &kp LALT   &none  &kp ESC  &trans  &trans  &trans
-            >;
-        };
-
-        accents {
-            bindings = <
-                &umt A     &trans         &tld A     &trans         &trans       &trans    &trans          &act U    &umt U    &umt O
-                &act A     &kp GRAVE      &german_sz &kp SQT        &kp LS(SQT)  &trans    &tld N          &act E    &act I    &act O
-&kp TILDE       &trans     &kp CARET      &kp RA(COMMA) &trans      &trans       &trans    &trans          &trans    &tld O    &trans    &live_keys SQT
-                                          &trans     &trans         &trans       &trans    &trans          &trans
-            >;
-        };
-
-        mouse {
-            bindings = <
-                &tog 8	&tog 8	&tog 8	&tog 8	&mkp MB4        &mkp LCLK	&mkp MCLK	&mkp RCLK	&mkp MB5  &tog 8
-                &tog 8	&tog 8	&tog 8	&tog 8	&mmv MOVE_LEFT	&mmv MOVE_DOWN	&mmv MOVE_UP	&mmv MOVE_RIGHT	&tog 8	  &tog 8
-&tog 8  &tog 8	&tog 8	&tog 8	&tog 8	&tog 8	&msc SCRL_LEFT	&msc SCRL_DOWN	&msc SCRL_UP	&msc SCRL_RIGHT	&tog 8	  &tog 8
-				&tog 8	&tog 8	&tog 8  &tog 8		&tog 8	&tog 8
-            >;
-        };
-
-	symbols_layer {
-	  bindings = <
-		   &kp MEH(Q) &kp MEH(W) &kp MEH(F) &kp MEH(P) &kp LBKT  &kp RBKT &kp F1 &kp F2  &kp F3   &kp F4 
-		   &kp MEH(A) &kp MEH(R) &kp MEH(S) &kp MEH(T) &kp LPAR  &kp RPAR &kp F5 &kp F6  &kp F7   &kp F8 
-  &live_keys GRAVE &kp MEH(Z) &kp MEH(X) &kp MEH(C) &kp MEH(V) &kp LBRC  &kp RBRC &kp F9 &kp F10 &kp F11  &kp F12  &trans
-		  			 &trans     &trans     &trans    &trans   &trans &trans 
-	    
-	    >;
-	};
+  act: act {
+      compatible = "zmk,behavior-macro-one-param";
+#binding-cells = <1>;
+      bindings = <&ans &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
     };
+
+  grv: grv {
+      compatible = "zmk,behavior-macro-one-param";
+#binding-cells = <1>;
+      bindings = <&gns &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+    };
+
+  tld: tld {
+      compatible = "zmk,behavior-macro-one-param";
+#binding-cells = <1>;
+      bindings = <&kp TILDE &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+    };
+
+  umt: umt {
+      compatible = "zmk,behavior-macro-one-param";
+#binding-cells = <1>;
+      bindings = <&kp DQT &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+    };
+
+  german_sz: german_sz {
+      compatible = "zmk,behavior-macro";
+#binding-cells = <0>;
+      bindings = <&kp SCROLLLOCK &kp S &kp S>;
+    };
+
+  meh: meh {
+      compatible = "zmk,behavior-macro-one-param";
+#binding-cells = <1>;
+      bindings = <&macro_param_1to1 &kp LC(LS(LA(MACRO_PLACEHOLDER)))>;
+    };
+  };
+
+  behaviors {
+  magic_shift: magic_shift {
+      compatible = "zmk,behavior-hold-tap";
+#binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <200>;
+      quick-tap-ms = <QUICK_TAP_MS>;
+      bindings = <&kp>, <&magic_shift_tap>;
+    };
+
+  magic_shift_tap: magic_shift_tap {
+      compatible = "zmk,behavior-mod-morph";
+#binding-cells = <0>;
+      bindings = <&sk LSHFT>, <&capsword>;
+      mods = <(MOD_LSFT)>;
+    };
+
+  capsword: capsword {
+      compatible = "zmk,behavior-caps-word";
+#binding-cells = <0>;
+      continue-list = <SEMICOLON MINUS UNDERSCORE BACKSPACE A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
+    };
+
+  altgr_accent: altgr_accent {
+      compatible = "zmk,behavior-hold-tap";
+      bindings = <&mo>, <&kp>;
+#binding-cells = <2>;
+      tapping-term-ms = <150>;
+      quick-tap-ms = <200>;
+    };
+
+  ans: acute_noshift {
+      compatible = "zmk,behavior-mod-morph";
+#binding-cells = <0>;
+      bindings = <&kp SQT>, <&kp SQT>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+  gns: grave_noshift {
+      compatible = "zmk,behavior-mod-morph";
+#binding-cells = <0>;
+      bindings = <&kp GRAVE>, <&kp GRAVE>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+
+  tgnum: toggle_or_quit_game_num {
+      compatible = "zmk,behavior-tap-dance";
+#binding-cells = <0>;
+      bindings = <&sl 5>, <&tog 5>;
+    };
+
+  kp2: key_two_presses {
+      compatible = "zmk,behavior-hold-tap";
+#binding-cells = <2>;
+      flavor = "tap-preferred";
+      tapping-term-ms = <200>;
+      bindings = <&kp>, <&kp>;
+    };
+  };
+
+  keymap {
+    compatible = "zmk,keymap";
+
+    default_layer {
+      bindings = <
+	&kp Q           &kp W           &kp F            &kp P                         &kp G              &kp J            &kp L              &kp U              &kp Y           &kp SEMICOLON
+	&mt LEFT_GUI A  &mt LEFT_ALT R  &mt LCTRL S      &mt LEFT_SHIFT T              &kp D              &kp H            &mt RIGHT_SHIFT N  &mt RCTRL E        &mt LEFT_ALT I  &mt RIGHT_GUI O
+	&mt RIGHT_ALT MINUS  &lt ACCENTS Z   &kp X           &mt RA(COMMA) C  &kp V                         &kp B              &kp K            &kp M              &kp2 MINUS COMMA   &kp2 EXCL DOT   &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
+	&lt NAV TAB      &mt MEH(LGUI) SPACE    	    &lt FUN ENTER      &lt SYM HYP(F12) MAGIC_SHIFT	   &lt NUM SCROLLLOCK
+	>;
+    };
+
+    fun_layer {
+      bindings = <
+	&trans       &trans	    &trans	     &trans	     &trans	 &kp PRINTSCREEN &kp F1		&kp F2		&kp F3   &kp F4
+	&sk LEFT_GUI &sk LEFT_ALT &sk LEFT_CONTROL &sk LEFT_SHIFT  &trans 	 &trans		 &kp F5 	&kp F6  	&kp F7   &kp F8
+	&trans	  &trans       &trans  	    &trans     	     &trans  	     &trans 	 &trans		 &kp F9 	&kp F10 	&kp F11  &kp F12  &live_keys TILDE
+	&trans  	     &trans 	     &kp ENTER	 &kp BACKSPACE   &kp DELETE    	&trans
+	>;
+    };
+
+    num_layer {
+      bindings = <
+	&kp FSLH               &kp N7           &kp N8        &kp N9             &kp MINUS     &trans	       &trans         &trans		&trans         &trans	      
+	&mt LEFT_GUI STAR	&mt LEFT_ALT N4  &mt LCTRL N5  &mt LEFT_SHIFT N6  &kp PLUS      &trans 	       &sk LEFT_SHIFT &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI  
+	&sk RALT         &kp N0                 &kp N1           &kp N2        &kp N3             &kp DOT       &trans 	       &trans         &trans            &trans         &trans           &trans
+	&kp LPAR      &kp COMMA   	  &kp RPAR	&trans	       &trans         &trans
+	>;
+    };
+
+    adjust_layer {
+      bindings = <
+	&bt BT_CLR    &none         &none         &studio_unlock  &none         &none         &studio_unlock  &none         &none         &bt BT_CLR
+	&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4  &bt BT_SEL 4  &bt BT_SEL 3    &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
+	&sys_reset  &none         &none         &none         &none           &none         &none         &none           &none         &none         &none         &sys_reset
+	&trans        &none           &trans        &none         &trans          &trans
+	>;
+    };
+
+    game_mode {
+      bindings = <
+	&kp T  &kp Q  &kp W		 &kp E           &kp R        &kp Y   &kp U   &kp I      &kp O    &kp P
+	&kp G  &kp A  &kp S    	 &kp D           &kp F        &kp H   &kp J   &kp K      &kp L    &kp SEMI
+	&kp LCTRL  &kp B  &kp Z  &kp X   	 &kp C           &kp V        &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &tog GAME 
+	&mt LALT ENTER  &lt 6 SPACE  	 &tgnum	      &trans  &trans  &trans
+	>;
+    };
+
+    game_num {
+      bindings = <
+	&kp EQUAL     &kp N7                 &kp N8     &kp N9     &kp F4  &trans  &trans  &trans  &trans  &trans
+	&kp MINUS     &mt LEFT_ALT NUMBER_4  &kp N5     &kp N6     &kp F5  &trans  &trans  &trans  &trans  &trans
+	&kp F3  	&kp NUMBER_0  &kp N1                 &kp N2     &kp N3     &kp F6  &trans  &trans  &trans  &trans  &trans  &trans
+	&sk LCTRL  &kp SPACE  &trans  &trans  &trans  &trans
+	>;
+    };
+
+    mirror_game {
+      bindings = <
+	&kp P     &kp O    &kp I      &kp U    &kp Y    &trans  &trans  &trans  &trans  &trans
+	&kp SEMI  &kp L    &kp K      &kp J    &kp H    &trans  &trans  &trans  &trans  &trans
+	&kp LEFT_CONTROL  &kp FSLH  &kp DOT  &kp COMMA  &kp M    &kp N    &trans  &trans  &trans  &trans  &trans  &trans
+	&kp LALT &none  	&kp ESC  &trans	  &trans  &trans
+	>;
+    };
+
+    accents {
+      bindings = <
+	&umt A     &trans         &tld A     &trans         &trans       &trans    &trans          &act U    &umt U    &umt O
+	&act A     &kp GRAVE      &german_sz &kp SQT        &kp LS(SQT)  &trans    &tld N          &act E    &act I    &act O
+	&kp TILDE       &trans     &kp CARET      &kp RA(COMMA) &trans      &trans       &trans    &trans          &trans    &tld O    &trans    &live_keys SQT
+	&trans     &trans         &trans       &trans    &trans          &trans
+	>;
+    };
+
+    symbols_layer {
+      bindings = <
+	&kp RBKT   &kp AMPS  &kp STAR    &kp EQUAL         &kp LBKT    &trans         &trans         &trans            &trans         &trans
+	&kp RPAR   &kp DLLR  &kp PRCNT   &live_keys CARET  &kp LPAR    &trans         &sk LEFT_SHIFT &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI
+	&live_keys GRAVE  &kp RBRC   &kp EXCL  &kp AT      &kp HASH          &kp LBRC    &trans         &trans         &trans            &trans         &trans           &trans
+	&trans      &trans     	     &trans      &trans   	&trans         &trans
+	>;
+    };
+
+    nav_layer {
+      bindings = <
+	&trans		 &trans		  &trans           &trans          &trans           &kp INSERT       &kp C_VOL_DN      &kp K_MUTE   &kp C_VOLUME_UP  &kp C_BRIGHTNESS_INC
+	&sk LEFT_GUI	 &sk LEFT_ALT 	  &sk LEFT_CONTROL &sk LEFT_SHIFT  &trans           &kp LEFT         &kp DOWN          &kp UP       &kp RIGHT        &kp CAPSLOCK
+	&trans      &trans      	 &trans       	  &trans           &trans          &trans           &kp HOME         &kp PAGE_DOWN     &kp PAGE_UP  &kp END          &kp C_BRIGHTNESS_DEC      &tog GAME 
+	&trans	   &trans	   &trans 	    &kp K_PREV       &kp K_PLAY_PAUSE  &lt 1 K_NEXT     
+	>;
+    };
+
+  };
 };
