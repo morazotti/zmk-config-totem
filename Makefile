@@ -2,7 +2,7 @@ SHIELDS = $(patsubst %.keymap,%,$(notdir $(wildcard config/*.keymap)))
 
 .PHONY: all update clean build copy debug
 
-all: clean build copy 
+all: build copy
 
 init:
 	docker run --rm -v $(PWD):/workdir -w /workdir zmkfirmware/zmk-dev-arm:3.5 bash -c "west init -l config"

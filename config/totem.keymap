@@ -120,57 +120,57 @@
   };
     
   macros {
-  plus_minus: plus_minus {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&kp SCROLLLOCK &kp PLUS &kp MINUS>;
-    };
+    plus_minus: plus_minus {
+	compatible = "zmk,behavior-macro";
+	#binding-cells = <0>;
+	bindings = <&kp SCROLLLOCK &kp PLUS &kp MINUS>;
+	};
 
-  live_keys: live_keys {
-      compatible = "zmk,behavior-macro-one-param";
-      #binding-cells = <1>;
-      bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
-    };
-    
-  german_sz: german_sz {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&kp SCROLLLOCK &kp S &kp S>;
-    };
+    live_keys: live_keys {
+	compatible = "zmk,behavior-macro-one-param";
+	#binding-cells = <1>;
+	bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
+	};
 
-  meh: meh {
-      compatible = "zmk,behavior-macro-one-param";
-      #binding-cells = <1>;
-      bindings = <&macro_param_1to1 &kp LC(LS(LA(MACRO_PLACEHOLDER)))>;
-    };
+    german_sz: german_sz {
+	compatible = "zmk,behavior-macro";
+	#binding-cells = <0>;
+	bindings = <&kp SCROLLLOCK &kp S &kp S>;
+	};
 
-  td: turn_dead {
-      compatible = "zmk,behavior-macro-one-param";
-      #binding-cells = <1>;
-      bindings = <&kp SCROLLLOCK &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-    };
-     
-  td2: turn_dead_two {
-      compatible = "zmk,behavior-macro-two-param";
-      #binding-cells = <2>;
-      bindings = <&kp SCROLLLOCK>,
-	<&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>,
-	<&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
-    };
+    meh: meh {
+	compatible = "zmk,behavior-macro-one-param";
+	#binding-cells = <1>;
+	bindings = <&macro_param_1to1 &kp LC(LS(LA(MACRO_PLACEHOLDER)))>;
+	};
 
-  cedilla_lower: cedilla_lower {
-      compatible = "zmk,behavior-macro-one-param";
-      #binding-cells = <1>;
-      bindings = <&kp SCROLLLOCK &kp COMMA &kp C>;
-    };
-    
+    td: turn_dead {
+	compatible = "zmk,behavior-macro-one-param";
+	#binding-cells = <1>;
+	bindings = <&kp SCROLLLOCK &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+	};
 
-  cedilla_upper: cedilla_upper {
-      compatible = "zmk,behavior-macro-one-param";
-      #binding-cells = <1>;
-      bindings = <&kp SCROLLLOCK &kp COMMA &kp LS(C)>;
-    };
-    
+    td2: turn_dead_two {
+	compatible = "zmk,behavior-macro-two-param";
+	#binding-cells = <2>;
+	bindings = <&kp SCROLLLOCK>,
+	    <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>,
+	    <&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
+	};
+
+    cedilla_lower: cedilla_lower {
+	compatible = "zmk,behavior-macro-one-param";
+	#binding-cells = <1>;
+	bindings = <&kp SCROLLLOCK &kp COMMA &kp C>;
+	};
+
+
+    cedilla_upper: cedilla_upper {
+	compatible = "zmk,behavior-macro-one-param";
+	#binding-cells = <1>;
+	bindings = <&kp SCROLLLOCK &kp COMMA &kp LS(C)>;
+	};
+
 
   };
 
@@ -413,7 +413,7 @@ behaviors {
     bindings = <&mo>, <&sl>;
   };
  };
- 
+
   keymap {
     compatible = "zmk,keymap";
 
@@ -421,7 +421,7 @@ behaviors {
       bindings = <
 			 &kp Q           &kp W                &kp F            &kp P                &kp G            &kp J            &kp L               &kp U              &kp Y           &kp SEMICOLON
 			 &mt LEFT_GUI A  &mt LEFT_ALT R       &mt LCTRL S      &mt LEFT_SHIFT T     &kp D            &kp H            &mt RIGHT_SHIFT N   &mt RCTRL E        &mt LEFT_ALT I  &mt RIGHT_GUI O
-    &mt RIGHT_ALT MINUS  &lt ACCENTS Z   &kp X                &cc  &kp V                &kp B            &kp K            &kp M               &kp2 MINUS COMMA   &kp2 EXCL DOT   &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
+    &mt RIGHT_ALT MINUS  &lt ACCENTS Z   &kp X                &cc  	       &kp V                &kp B            &kp K            &kp M               &kp2 MINUS COMMA   &kp2 EXCL DOT   &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
     		  	     	       			      &lt NAV TAB      &mt MEH(LGUI) SPACE  &lt FUN ENTER    &lt SYM HYP(F12) MAGIC_SHIFT	  &snm NUM ACCENTS
 	>;
     };
@@ -482,10 +482,10 @@ behaviors {
 
     accents {
       bindings = <
-	    &uml_a     &trans         &tld_a		&trans         &td G       &trans    &trans          &act_u    &uml_u    &uml_o
-	    &act_a     &td GRAVE      &german_sz	&td SQT        &td LS(SQT)  &trans    &tld_n          &act_e    &act_i    &act_o
-&td TILDE   &trans     &td CARET      &cc	&trans         &trans       &trans    &trans	      &trans    &tld_o    &trans    &kp SQT
-				      &trans		&trans         &trans       &trans    &trans          &kp SCROLLLOCK
+	    &uml_a     &trans         &tld_a		&trans         &td G        &trans    &trans          &act_u          &uml_u    &uml_o
+	    &act_a     &td GRAVE      &german_sz	&td SQT        &td LS(SQT)  &trans    &tld_n          &act_e          &act_i    &act_o
+&td TILDE   &trans     &td CARET      &cc		&trans         &trans       &trans    &trans	      &trans          &tld_o    &trans    &kp SQT
+				      &kp SCROLLLOCK	&trans         &trans       &trans    &trans          &kp SCROLLLOCK
 	>;
     };
 
@@ -500,10 +500,10 @@ behaviors {
 
     nav_layer {
       bindings = <
-	&trans		 &trans		  &trans           &trans          &trans           &kp INSERT       &kp C_VOL_DN      &kp K_MUTE   &kp C_VOLUME_UP  &kp C_BRIGHTNESS_INC
-	&sk LEFT_GUI	 &sk LEFT_ALT 	  &sk LEFT_CONTROL &sk LEFT_SHIFT  &trans           &kp LEFT         &kp DOWN          &kp UP       &kp RIGHT        &kp CAPSLOCK
-	&trans      &trans      	 &trans       	  &trans           &trans          &trans           &kp HOME         &kp PAGE_DOWN     &kp PAGE_UP  &kp END          &kp C_BRIGHTNESS_DEC      &tog GAME 
-	&trans	   &trans	   &trans 	    &kp K_PREV       &kp K_PLAY_PAUSE  &lt 1 K_NEXT     
+	    &trans		 &trans		  &trans           &trans           &trans           &kp INSERT       &kp C_VOL_DN      &kp K_MUTE   &kp C_VOLUME_UP  &kp C_BRIGHTNESS_INC
+	    &sk LEFT_GUI	 &sk LEFT_ALT 	  &sk LEFT_CONTROL &sk LEFT_SHIFT   &trans           &kp LEFT         &kp DOWN          &kp UP       &kp RIGHT        &kp CAPSLOCK
+&trans      &trans      	 &trans       	  &trans           &trans           &trans           &kp HOME         &kp PAGE_DOWN     &kp PAGE_UP  &kp END          &kp C_BRIGHTNESS_DEC      &tog GAME 
+	&trans	   &trans	   &trans 	  &kp K_PREV       &kp K_PLAY_PAUSE &lt 1 K_NEXT     
 	>;
     };
 
