@@ -413,7 +413,7 @@ behaviors {
     bindings = <&mo>, <&sl>;
   };
  };
-
+ 
   keymap {
     compatible = "zmk,keymap";
 
@@ -482,7 +482,7 @@ behaviors {
 
     accents {
       bindings = <
-	    &uml_a     &trans         &tld_a		&trans         &trans       &trans    &trans          &act_u    &uml_u    &uml_o
+	    &uml_a     &trans         &tld_a		&trans         &td G       &trans    &trans          &act_u    &uml_u    &uml_o
 	    &act_a     &td GRAVE      &german_sz	&td SQT        &td LS(SQT)  &trans    &tld_n          &act_e    &act_i    &act_o
 &td TILDE   &trans     &td CARET      &cc	&trans         &trans       &trans    &trans	      &trans    &tld_o    &trans    &kp SQT
 				      &trans		&trans         &trans       &trans    &trans          &kp SCROLLLOCK
