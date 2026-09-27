@@ -117,72 +117,67 @@
       bindings = <&kp RBKT>;
     };
 
-    grave {
-      key-positions = <10 11>;
-      bindings = <&live_keys GRAVE>;
-    };
-
-    acute {
-      key-positions = <18 19>;
-      bindings = <&live_keys SQT>;
-    };
-
   };
     
   macros {
   plus_minus: plus_minus {
       compatible = "zmk,behavior-macro";
-#binding-cells = <0>;
+      #binding-cells = <0>;
       bindings = <&kp SCROLLLOCK &kp PLUS &kp MINUS>;
     };
 
   live_keys: live_keys {
       compatible = "zmk,behavior-macro-one-param";
-#binding-cells = <1>;
+      #binding-cells = <1>;
       bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
     };
-
-  act: act {
-      compatible = "zmk,behavior-macro-one-param";
-#binding-cells = <1>;
-      bindings = <&ans &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-    };
-
-  grv: grv {
-      compatible = "zmk,behavior-macro-one-param";
-#binding-cells = <1>;
-      bindings = <&gns &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-    };
-
-  tld: tld {
-      compatible = "zmk,behavior-macro-one-param";
-#binding-cells = <1>;
-      bindings = <&kp TILDE &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-    };
-
-  umt: umt {
-      compatible = "zmk,behavior-macro-one-param";
-#binding-cells = <1>;
-      bindings = <&kp DQT &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-    };
-
+    
   german_sz: german_sz {
       compatible = "zmk,behavior-macro";
-#binding-cells = <0>;
+      #binding-cells = <0>;
       bindings = <&kp SCROLLLOCK &kp S &kp S>;
     };
 
   meh: meh {
       compatible = "zmk,behavior-macro-one-param";
-#binding-cells = <1>;
+      #binding-cells = <1>;
       bindings = <&macro_param_1to1 &kp LC(LS(LA(MACRO_PLACEHOLDER)))>;
     };
+
+  td: turn_dead {
+      compatible = "zmk,behavior-macro-one-param";
+      #binding-cells = <1>;
+      bindings = <&kp SCROLLLOCK &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+    };
+     
+  td2: turn_dead_two {
+      compatible = "zmk,behavior-macro-two-param";
+      #binding-cells = <2>;
+      bindings = <&kp SCROLLLOCK>,
+	<&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>,
+	<&macro_param_2to1>, <&kp MACRO_PLACEHOLDER>;
+    };
+
+  cedilla_lower: cedilla_lower {
+      compatible = "zmk,behavior-macro-one-param";
+      #binding-cells = <1>;
+      bindings = <&kp SCROLLLOCK &kp COMMA &kp C>;
+    };
+    
+
+  cedilla_upper: cedilla_upper {
+      compatible = "zmk,behavior-macro-one-param";
+      #binding-cells = <1>;
+      bindings = <&kp SCROLLLOCK &kp COMMA &kp LS(C)>;
+    };
+    
+
   };
 
-  behaviors {
+behaviors {
   magic_shift: magic_shift {
       compatible = "zmk,behavior-hold-tap";
-#binding-cells = <2>;
+      #binding-cells = <2>;
       flavor = "balanced";
       tapping-term-ms = <200>;
       quick-tap-ms = <QUICK_TAP_MS>;
@@ -191,53 +186,233 @@
 
   magic_shift_tap: magic_shift_tap {
       compatible = "zmk,behavior-mod-morph";
-#binding-cells = <0>;
+      #binding-cells = <0>;
       bindings = <&sk LSHFT>, <&capsword>;
       mods = <(MOD_LSFT)>;
     };
 
   capsword: capsword {
       compatible = "zmk,behavior-caps-word";
-#binding-cells = <0>;
+      #binding-cells = <0>;
       continue-list = <SEMICOLON MINUS UNDERSCORE BACKSPACE A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
     };
 
   altgr_accent: altgr_accent {
       compatible = "zmk,behavior-hold-tap";
       bindings = <&mo>, <&kp>;
-#binding-cells = <2>;
+      #binding-cells = <2>;
       tapping-term-ms = <150>;
       quick-tap-ms = <200>;
     };
 
-  ans: acute_noshift {
-      compatible = "zmk,behavior-mod-morph";
-#binding-cells = <0>;
-      bindings = <&kp SQT>, <&kp SQT>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-
-  gns: grave_noshift {
-      compatible = "zmk,behavior-mod-morph";
-#binding-cells = <0>;
-      bindings = <&kp GRAVE>, <&kp GRAVE>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-
   tgnum: toggle_or_quit_game_num {
       compatible = "zmk,behavior-tap-dance";
-#binding-cells = <0>;
+      #binding-cells = <0>;
       bindings = <&sl 5>, <&tog 5>;
     };
 
   kp2: key_two_presses {
       compatible = "zmk,behavior-hold-tap";
-#binding-cells = <2>;
+      #binding-cells = <2>;
       flavor = "tap-preferred";
       tapping-term-ms = <200>;
       bindings = <&kp>, <&kp>;
     };
+
+
+  act_a: acute_a {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 SQT A>, <&td2 SQT LS(A)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  act_e: acute_e {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 SQT E>, <&td2 SQT LS(E)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  act_i: acute_i {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 SQT I>, <&td2 SQT LS(I)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  act_o: acute_o {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 SQT O>, <&td2 SQT LS(O)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  act_u: acute_u {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 SQT U>, <&td2 SQT LS(U)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  grv_a: grave_a {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 GRAVE A>, <&td2 GRAVE LS(A)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  grv_e: grave_e {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 GRAVE E>, <&td2 GRAVE LS(E)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  grv_i: grave_i {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 GRAVE I>, <&td2 GRAVE LS(I)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  grv_o: grave_o {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 GRAVE O>, <&td2 GRAVE LS(O)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  grv_u: grave_u {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 GRAVE U>, <&td2 GRAVE LS(U)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+  tld_a: tilde_a {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 TILDE A>, <&td2 TILDE LS(A)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+  tld_e: tilde_e {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 TILDE E>, <&td2 TILDE LS(E)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+  tld_i: tilde_i {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 TILDE I>, <&td2 TILDE LS(I)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+  tld_o: tilde_o {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 TILDE O>, <&td2 TILDE LS(O)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+  tld_u: tilde_u {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 TILDE U>, <&td2 TILDE LS(U)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+  tld_n: tilde_n {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 TILDE N>, <&td2 TILDE LS(N)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+
+  uml_a: umlaut_a {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 DQT A>, <&td2 DQT LS(A)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+  uml_e: umlaut_e {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 DQT E>, <&td2 DQT LS(E)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+  uml_i: umlaut_i {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 DQT I>, <&td2 DQT LS(I)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+  uml_o: umlaut_o {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 DQT O>, <&td2 DQT LS(O)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+  uml_u: umlaut_u {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&td2 DQT U>, <&td2 DQT LS(U)>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
+   };
+
+
+ ht_lower: hold_tap_lower {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <160>;
+    quick-tap-ms = <150>;
+    bindings = <&cedilla_lower>, <&kp>;
   };
+
+ ht_upper: hold_tap_upper {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <160>;
+    quick-tap-ms = <150>;
+    bindings = <&cedilla_upper>, <&kp>;
+  };
+
+ cc: c_cedilla_morph {
+    compatible = "zmk,behavior-mod-morph";
+    #binding-cells = <0>;
+    bindings = <&ht_lower 0 C>, <&ht_upper 0 C>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+  };
+
+ aon: accents_or_num {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "tap-preferred";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <150>;
+    bindings = <&mo>, <&sl>;
+  };
+ };
 
   keymap {
     compatible = "zmk,keymap";
@@ -246,8 +421,8 @@
       bindings = <
 			 &kp Q           &kp W                &kp F            &kp P                &kp G            &kp J            &kp L               &kp U              &kp Y           &kp SEMICOLON
 			 &mt LEFT_GUI A  &mt LEFT_ALT R       &mt LCTRL S      &mt LEFT_SHIFT T     &kp D            &kp H            &mt RIGHT_SHIFT N   &mt RCTRL E        &mt LEFT_ALT I  &mt RIGHT_GUI O
-    &mt RIGHT_ALT MINUS  &lt ACCENTS Z   &kp X                &mt RA(COMMA) C  &kp V                &kp B            &kp K            &kp M               &kp2 MINUS COMMA   &kp2 EXCL DOT   &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
-    		  	     	       			      &lt NAV TAB      &mt MEH(LGUI) SPACE  &lt FUN ENTER    &lt SYM HYP(F12) MAGIC_SHIFT	  &lt NUM SCROLLLOCK
+    &mt RIGHT_ALT MINUS  &lt ACCENTS Z   &kp X                &cc  &kp V                &kp B            &kp K            &kp M               &kp2 MINUS COMMA   &kp2 EXCL DOT   &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
+    		  	     	       			      &lt NAV TAB      &mt MEH(LGUI) SPACE  &lt FUN ENTER    &lt SYM HYP(F12) MAGIC_SHIFT	  &aon NUM ACCENTS
 	>;
     };
 
@@ -255,7 +430,7 @@
       bindings = <
 	&trans       &trans	    &trans	     &trans	     &trans	 &kp PRINTSCREEN &kp F5 	&kp F6  	&kp F7   &kp F8
 	&sk LEFT_GUI &sk LEFT_ALT   &sk LEFT_CONTROL &sk LEFT_SHIFT  &trans 	 &kp LA(TAB)	 &kp F1		&kp F2		&kp F3   &kp F4
-&trans	&trans       &trans  	    &trans     	     &trans  	     &trans 	 &kp LG(TAB)	 &kp F9 	&kp F10 	&kp F11  &kp F12  &live_keys TILDE
+&trans	&trans       &trans  	    &trans     	     &trans  	     &trans 	 &kp LG(TAB)	 &kp F9 	&kp F10 	&kp F11  &kp F12  &kp TILDE
 				    &trans  	     &trans  	     &trans 	 &kp ENTER	 &kp BACKSPACE  &kp DELETE    	
 	>;
     };
@@ -275,7 +450,7 @@
 	&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4  &bt BT_SEL 4  &bt BT_SEL 3    &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0
 	&sys_reset  &none         &none         &none         &none           &none         &none         &none           &none         &none         &none         &sys_reset
 	&trans        &none           &trans        &none         &trans          &trans
-	>;
+	>; 
     };
 
     game_mode {
@@ -307,10 +482,10 @@
 
     accents {
       bindings = <
-	&umt A     &trans         &tld A     &trans         &trans       &trans    &trans          &act U    &umt U    &umt O
-	&act A     &kp GRAVE      &german_sz &kp SQT        &kp LS(SQT)  &trans    &tld N          &act E    &act I    &act O
-	&kp TILDE       &trans     &kp CARET      &kp RA(COMMA) &trans      &trans       &trans    &trans          &trans    &tld O    &trans    &live_keys SQT
-	&trans     &trans         &trans       &trans    &trans          &trans
+	    &uml_a     &trans         &tld_a		&trans         &trans       &trans    &trans          &act_u    &uml_u    &uml_o
+	    &act_a     &td GRAVE      &german_sz	&td SQT        &td LS(SQT)  &trans    &tld_n          &act_e    &act_i    &act_o
+&td TILDE   &trans     &td CARET      &cc	&trans         &trans       &trans    &trans	      &trans    &tld_o    &trans    &kp SQT
+				      &trans		&trans         &trans       &trans    &trans          &kp SCROLLLOCK
 	>;
     };
 
@@ -318,7 +493,7 @@
       bindings = <
 	          &kp RBRC   &kp EQUAL        &kp STAR    &kp AMPS    &kp LBRC    &trans         &trans         &trans            &trans         &trans
 	          &kp RPAR   &kp HASH         &kp AT      &kp EXCL    &kp LPAR    &trans         &sk LEFT_SHIFT &sk LEFT_CONTROL  &sk LEFT_ALT   &sk LEFT_GUI
-&live_keys GRAVE  &kp RBKT   &live_keys CARET &kp PRCNT   &kp DLLR    &kp LBKT    &trans         &trans         &trans            &trans         &trans           &trans
+&kp GRAVE  &kp RBKT   &kp CARET &kp PRCNT   &kp DLLR    &kp LBKT    &trans         &trans         &trans            &trans         &trans           &trans
 &trans     	  &trans     &trans    	      &trans      &trans            &trans
 	>;
     };
