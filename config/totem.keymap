@@ -400,7 +400,7 @@ behaviors {
  cc: c_cedilla_morph {
     compatible = "zmk,behavior-mod-morph";
     #binding-cells = <0>;
-    bindings = <&ht_lower 0 C>, <&ht_upper 0 C>;
+    bindings = <&ht_lower 0 C>, <&ht_upper 0 LS(C)>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
   };
 
