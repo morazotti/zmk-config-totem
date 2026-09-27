@@ -404,12 +404,12 @@ behaviors {
     mods = <(MOD_LSFT|MOD_RSFT)>;
   };
 
- aon: accents_or_num {
+ snm: sticky_and_momentary {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "tap-preferred";
     tapping-term-ms = <200>;
-    quick-tap-ms = <150>;
+    quick-tap-ms = <100>;
     bindings = <&mo>, <&sl>;
   };
  };
@@ -422,7 +422,7 @@ behaviors {
 			 &kp Q           &kp W                &kp F            &kp P                &kp G            &kp J            &kp L               &kp U              &kp Y           &kp SEMICOLON
 			 &mt LEFT_GUI A  &mt LEFT_ALT R       &mt LCTRL S      &mt LEFT_SHIFT T     &kp D            &kp H            &mt RIGHT_SHIFT N   &mt RCTRL E        &mt LEFT_ALT I  &mt RIGHT_GUI O
     &mt RIGHT_ALT MINUS  &lt ACCENTS Z   &kp X                &cc  &kp V                &kp B            &kp K            &kp M               &kp2 MINUS COMMA   &kp2 EXCL DOT   &altgr_accent 7 FSLH  &mt RIGHT_ALT BSLH
-    		  	     	       			      &lt NAV TAB      &mt MEH(LGUI) SPACE  &lt FUN ENTER    &lt SYM HYP(F12) MAGIC_SHIFT	  &aon NUM ACCENTS
+    		  	     	       			      &lt NAV TAB      &mt MEH(LGUI) SPACE  &lt FUN ENTER    &lt SYM HYP(F12) MAGIC_SHIFT	  &snm NUM ACCENTS
 	>;
     };
 
