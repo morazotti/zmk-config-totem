@@ -436,6 +436,13 @@ behaviors {
     mods = <(MOD_LSFT|MOD_RSFT)>;
   };
 
+ cc_accent: c_cedilla_accent {
+    compatible = "zmk,behavior-mod-morph";
+    #binding-cells = <0>;
+    bindings = <&cedilla_lower 0>, <&cedilla_upper 0>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+  };
+
  snm: sticky_and_momentary {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
@@ -516,7 +523,7 @@ behaviors {
       bindings = <
 	    &uml_a     &kp RA(LBRC) &tld_a		&kp RA(RBRC) &td G        &trans    &trans          &act_u          &uml_u    &uml_o
 	    &act_a     &td GRAVE      &german_sz	&td SQT        &td LS(SQT)  &trans    &tld_n          &act_e          &act_i    &act_o
-&td TILDE   &trans     &td CARET      &cc		&trans         &trans       &trans    &trans	      &td COMMA       &tld_o    &trans    &kp SQT
+&td TILDE   &trans     &td CARET      &cc_accent	&trans         &trans       &trans    &trans	      &td COMMA       &tld_o    &trans    &kp SQT
 				      &kp SCROLLLOCK	&trans         &trans       &trans    &trans          &kp SCROLLLOCK
 	>;
     };
