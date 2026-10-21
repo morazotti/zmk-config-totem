@@ -107,6 +107,18 @@
       bindings = <&plus_minus>;
     };
 
+    sqt {
+      timeout-ms = <30>;
+      key-positions = <6 16>;
+      bindings = <&kp SQT>;
+    };
+
+    dqt {
+      timeout-ms = <30>;
+      key-positions = <7 17>;
+      bindings = <&kp DQT>;
+    };
+
     open_bracket {
       key-positions = <8 9>;
       bindings = <&kp LBKT>;
