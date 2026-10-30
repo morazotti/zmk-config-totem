@@ -50,6 +50,11 @@
 
 &sk { quick-release; };
 
+// Sticky layers (ACCENTS) survive modifier presses, so MAGIC_SHIFT can be
+// held after the layer is armed (ACCENTS -> MAGIC_SHIFT -> letter = accented
+// uppercase). Without this, the LSHFT hold press releases the layer first.
+&sl { ignore-modifiers; };
+
 / {
   conditional_layers {
     compatible = "zmk,conditional-layers";
